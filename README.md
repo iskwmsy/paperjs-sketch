@@ -21,4 +21,4 @@
 
 ## LICENSE
 
-This repository is published under an MIT License. See the included [LICENSE file](./LICENSE).
+This repository is published under an MIT License. See the included [LICENSE file](./LICENSE.txt).
