@@ -1,3 +1,5 @@
+import { copyToClipBoard, pasteFromClipBoard } from './src/func-clipboard.js';
+
 //create canvas
 const canvas = document.getElementById('canvas1');
 const paperScope = new paper.PaperScope();
@@ -19,7 +21,7 @@ function initCanvas() {
   canvas.height = window.innerHeight;
   canvas.style.backgroundColor = 'white';
   paperScope.setup(canvas);
-  updateStatus();
+  mainLoop();
 }
 
 function addEventListeners() {
@@ -28,7 +30,7 @@ function addEventListeners() {
 
   document.addEventListener('keydown', async (event) => {
     if (event.ctrlKey || event.metaKey) {
-      if (event.code == 'KeyC') await copyToClipBoard();
+      if (event.code == 'KeyC') await copyToClipBoard(paperScope);
       if (event.code == 'KeyV') {
         const text = await pasteFromClipBoard();
         if (text) {
@@ -40,7 +42,7 @@ function addEventListeners() {
 }
 
 function animationLoop() {
-  updateStatus();
+  mainLoop();
   if (preferences.animate) {
     requestAnimationFrame(animationLoop);
   }
@@ -50,7 +52,7 @@ function animationLoop() {
 // update status
 ///////////////////////////////////////////////////////////////////////////////
 
-function updateStatus() {
+function mainLoop() {
   drawBackground(paperScope, 'grey');
   drawRoundDot(paperScope, [paperScope.view.center.x, paperScope.view.center.y], 10, 'red');
 }
@@ -59,26 +61,26 @@ function updateStatus() {
 // functions
 ///////////////////////////////////////////////////////////////////////////////
 
-async function copyToClipBoard() {
-  //let data = 'Hello World';
-  let data = getSVGText(paperScope);
-  try {
-    await navigator.clipboard.writeText(data);
-    console.log('Copy Succeeded');
-  } catch (err) {
-    console.error('Fail, or user denied.');
-  }
-}
+// async function copyToClipBoard() {
+//   //let data = 'Hello World';
+//   let data = getSVGText(paperScope);
+//   try {
+//     await navigator.clipboard.writeText(data);
+//     console.log('Copy Succeeded');
+//   } catch (err) {
+//     console.error('Fail, or user denied.');
+//   }
+// }
 
-async function pasteFromClipBoard() {
-  try {
-    const clipText = await navigator.clipboard.readText();
-    console.log('Paste Succeeded');
-    return clipText;
-  } catch (err) {
-    console.error('Fail, or user denied.');
-  }
-}
+// async function pasteFromClipBoard() {
+//   try {
+//     const clipText = await navigator.clipboard.readText();
+//     console.log('Paste Succeeded');
+//     return clipText;
+//   } catch (err) {
+//     console.error('Fail, or user denied.');
+//   }
+// }
 
 ///////////////////////////////////////////////////////////////////////////////
 // draw functions
@@ -110,10 +112,6 @@ function drawEllipse(scope, value2_position, value2_size, color) {
     size: value2_size,
     fillColor: color,
   });
-}
-
-function getSVGText(scope) {
-  return scope.project.exportSVG({ asString: true });
 }
 
 //////////////////////////////////////////////////////////////////

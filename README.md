@@ -4,7 +4,7 @@
 
 - A sketch template of Paper.js with copy and paste features for graphic designers.
 - 2023/5/27 repository created.
-- 2024/4/18 repository created.
+- 2024/4/18 paperjs-sketch.js
 
 ## How to use
 
@@ -13,7 +13,8 @@
 ### files
 
 - ./index.html
-- ./script.js
+- ./paperjs-sketch.js
+- ./paperjs-sketch.html
 
 - ./lib/ Paper.js is here.
 - ./src/ modules.
