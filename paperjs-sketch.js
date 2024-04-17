@@ -61,27 +61,6 @@ function mainLoop() {
 // functions
 ///////////////////////////////////////////////////////////////////////////////
 
-// async function copyToClipBoard() {
-//   //let data = 'Hello World';
-//   let data = getSVGText(paperScope);
-//   try {
-//     await navigator.clipboard.writeText(data);
-//     console.log('Copy Succeeded');
-//   } catch (err) {
-//     console.error('Fail, or user denied.');
-//   }
-// }
-
-// async function pasteFromClipBoard() {
-//   try {
-//     const clipText = await navigator.clipboard.readText();
-//     console.log('Paste Succeeded');
-//     return clipText;
-//   } catch (err) {
-//     console.error('Fail, or user denied.');
-//   }
-// }
-
 ///////////////////////////////////////////////////////////////////////////////
 // draw functions
 ///////////////////////////////////////////////////////////////////////////////
