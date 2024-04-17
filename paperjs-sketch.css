@@ -1,0 +1,19 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: white; /* optional: set background color */
+}
+
+/* Scale canvas with resize attribute to full size */
+/* canvas[resize] {
+  width: 100%;
+  height: 100%;
+} */
