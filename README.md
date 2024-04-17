@@ -15,11 +15,11 @@
 - ./index.html
 - ./paperjs-sketch.js
 - ./paperjs-sketch.html
+- ./paperjs-sketch.css
 
 - ./lib/ Paper.js is here.
 - ./src/ modules.
 - ./test/ files used during development.
-- ./css/
 
 ## LICENSE
 
