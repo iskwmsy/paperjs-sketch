@@ -1,3 +1,4 @@
+import { Pane } from './lib/tweakpane-4.0.3.min.js';
 import { copyToClipBoard, pasteFromClipBoard } from './src/func-clipboard.js';
 
 //create canvas
@@ -5,9 +6,30 @@ const canvas = document.getElementById('canvas1');
 const paperScope = new paper.PaperScope();
 
 ///////////////////////////////////////////////////////////////////////////////
+// tweakpane
+///////////////////////////////////////////////////////////////////////////////
+
+const PARAMS = {
+  num_1: 14,
+  num_2: 14,
+  title: 'hello',
+  color: '#ff0055',
+  theme: 'dark',
+  animation: false,
+};
+
+const pane = new Pane();
+
+pane.addBinding(PARAMS, 'num_1');
+pane.addBinding(PARAMS, 'num_2', { min: 0, max: 100, step: 10 });
+pane.addBinding(PARAMS, 'title');
+pane.addBinding(PARAMS, 'color');
+pane.addBinding(PARAMS, 'theme', { options: { Dark: 'dark', Light: 'light' } });
+pane.addBinding(PARAMS, 'animation');
+
+///////////////////////////////////////////////////////////////////////////////
 // settings
 ///////////////////////////////////////////////////////////////////////////////
-let preferences = { animate: false };
 
 initCanvas();
 addEventListeners();
@@ -43,7 +65,7 @@ function addEventListeners() {
 
 function animationLoop() {
   mainLoop();
-  if (preferences.animate) {
+  if (PARAMS.animate) {
     requestAnimationFrame(animationLoop);
   }
 }
