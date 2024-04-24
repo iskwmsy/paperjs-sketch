@@ -20,6 +20,10 @@ const PARAMS = {
 
 const pane = new Pane();
 
+pane.on('change', (ev) => {
+  mainLoop();
+});
+
 pane.addBinding(PARAMS, 'num_1');
 pane.addBinding(PARAMS, 'num_2', { min: 0, max: 100, step: 10 });
 pane.addBinding(PARAMS, 'title');
